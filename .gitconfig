@@ -1,0 +1,50 @@
+[user]
+    name = Jan Prachař
+    email = jan.prachar@wikidi.com
+[color]
+    ui = true
+[log]
+    decorate = true
+[format]
+    pretty = oneline
+[alias]
+    mergedone = merge --no-ff --no-commit
+    changelog = tag -l v* -n20
+    st = status
+    ci = commit
+    co = checkout
+    di = diff
+    dc = diff --cached
+    amend = commit --amend
+    aa = add --all
+    ff = merge --ff-only
+    pullff = pull --ff-only
+    b = branch
+	poh = push -f origin HEAD
+    ds = diff --stat=160,120
+    dh1 = diff HEAD~1
+	msgs = log --format="%s%n%b" --reverse
+
+    # Divergence (commits we added and commits remote added)
+    div = divergence
+
+    # Goodness (summary of diff lines added/removed/total)
+    gn = goodness
+    gnc = goodness --cached
+
+    # Fancy logging.
+    #   h = head
+    #   hp = head with patch
+    #   r = recent commits, only current branch
+    #   ra = recent commits, all reachable refs
+    #   l = all commits, only current branch
+    #   la = all commits, all reachable refs
+    head = !git l -1
+    h = !git head
+    hp = "!. ~/.githelpers && show_git_head"
+    r = !git l -30
+    ra = !git r --all
+    l = "!. ~/.githelpers && pretty_git_log"
+    la = !git l --all
+[core]
+    editor = vim
