@@ -143,3 +143,13 @@ grb_git_prompt () {
 }
 #PS1="\h:\W\$(grb_git_prompt) \u\$ "
 PS1="\[${BRIGHT_BLACK}\]\h\[${NORMAL}\]:\[${BRIGHT_BLUE}\]\W\[${NORMAL}\]"'$(__git_ps1 "(\[${BRIGHT_BLUE}\]%s\[${NORMAL}\]|\[$(grb_git_prompt)\]$(minutes_since_last_commit)m\[${NORMAL}\])")'" \[${BRIGHT_GREEN}\]\u\[${NORMAL}\]\$ "
+
+# If this is an xterm set the title to user@host:dir
+case "$TERM" in
+xterm*|rxvt*)
+    PS1="\[\e]0;${debian_chroot:+($debian_chroot)}\h:\w\a\]$PS1"
+    ;;
+*)
+    ;;
+esac
+
