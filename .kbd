@@ -1,0 +1,17 @@
+#!/bin/bash
+# disable numeric keypad
+xmodmap -e "keycode 63 = "
+xmodmap -e "keycode 79 = "
+xmodmap -e "keycode 80 = "
+xmodmap -e "keycode 81 = "
+xmodmap -e "keycode 82 = "
+xmodmap -e "keycode 83 = "
+xmodmap -e "keycode 84 = "
+xmodmap -e "keycode 85 = "
+xmodmap -e "keycode 86 = "
+xmodmap -e "keycode 87 = "
+xmodmap -e "keycode 88 = "
+xmodmap -e "keycode 89 = "
+xmodmap -e "keycode 90 = "
+xmodmap -e "keycode 91 = "
+xmodmap -e "keycode 106 = "

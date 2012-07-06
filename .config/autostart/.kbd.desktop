@@ -1,0 +1,11 @@
+
+[Desktop Entry]
+Type=Application
+Exec=/home/honza/.kbd
+Hidden=false
+NoDisplay=false
+X-GNOME-Autostart-enabled=true
+Name[en]=Keyboard modifications
+Name=Keyboard modifications
+Comment[en]=
+Comment=
