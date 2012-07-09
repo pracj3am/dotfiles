@@ -11,5 +11,8 @@
 		<li type="string">
 			<stringvalue>Profile0</stringvalue>
 		</li>
+		<li type="string">
+			<stringvalue>Profile1</stringvalue>
+		</li>
 	</entry>
 </gconf>
