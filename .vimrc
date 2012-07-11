@@ -290,6 +290,12 @@ map <leader>a :call RunTests('')<cr>
 map <leader>tcs :w\|:call RunPhpcs()<cr>
 map <leader>w :w\|:!script/features --profile wip<cr>
 
+function! RunTestFile()
+   let l:filename=@%
+   let l:phpunit_output=system('php -d include_path=tests:testbuilder/usr/share/php testbuilder/usr/bin/phpunit -c tests/phpunit.xml '.l:filename)
+   echo l:phpunit_output
+endfunction
+
 function! RunPhpcs()
    let l:filename=@%
    let l:phpcs_output=system('phpcs --encoding=utf-8 --report=csv --standard=testbuilder/codesniffer/standard/Wikidi/ruleset.xml '.l:filename)
