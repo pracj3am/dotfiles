@@ -132,8 +132,8 @@ nnoremap <C-P> :call PhpDocSingle()<CR>
 vnoremap <C-P> :call PhpDocRange()<CR> 
 
 " ant
-nnoremap <leader>b :!ant fnc.deploy-static<cr>
-nnoremap <leader>d :!ant deploy<cr>
+nnoremap <leader>b :w\|:!ant fnc.deploy-static<cr>
+nnoremap <leader>d :w\|:!ant deploy<cr>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " MULTIPURPOSE TAB KEY
