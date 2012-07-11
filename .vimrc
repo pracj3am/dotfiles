@@ -245,8 +245,9 @@ nnoremap <leader>ri :call InlineVariable()<cr>
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 map <leader>gs :CommandTFlush<cr>\|:CommandT src/<cr>
 map <leader>gj :CommandTFlush<cr>\|:CommandT src-js/<cr>
-map <leader>gl :CommandTFlush<cr>\|:CommandT src-less/<cr>
+map <leader>gc :CommandTFlush<cr>\|:CommandT src-less/<cr>
 map <leader>gt :CommandTFlush<cr>\|:CommandT templates<cr>
+map <leader>ge :CommandTFlush<cr>\|:CommandT tests/<cr>
 map <leader>f :CommandTFlush<cr>\|:CommandT<cr>
 map <leader>F :CommandTFlush<cr>\|:CommandT %%<cr>
 
