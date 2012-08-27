@@ -49,3 +49,6 @@
     la = !git l --all
 [core]
     editor = vim
+[merge]
+	defaultToUpstream = true
+
