@@ -20,11 +20,11 @@
     ff = merge --ff-only
     pullff = pull --ff-only
     b = branch
-	poh = push origin HEAD
-	pfoh = push -f origin HEAD
+    poh = push origin HEAD
+    pfoh = push -f origin HEAD
     ds = diff --stat=160,120
     dh1 = diff HEAD~1
-	msgs = log --format="%s%n%b" --reverse
+    msgs = log --format="%s%n%b" --reverse
 
     # Divergence (commits we added and commits remote added)
     div = divergence
@@ -50,5 +50,5 @@
 [core]
     editor = vim
 [merge]
-	defaultToUpstream = true
+    defaultToUpstream = true
 
