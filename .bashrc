@@ -118,43 +118,8 @@ export PSORIG="$PS1"
 # ACTUAL CUSTOMIZATION OH NOES!
 . ~/bash_colors.sh
 
-function minutes_since_last_commit () {
-    local g="$(__gitdir)"
-    if [ -n "$g" ]; then
-		now=`date +%s`
-		last_commit=`git log --pretty=format:'%at' -1`
-		seconds_since_last_commit=$((now-last_commit))
-		minutes_since_last_commit=$((seconds_since_last_commit/60))
-		echo $minutes_since_last_commit
-	fi
-}
-grb_git_prompt () {
-    local g="$(__gitdir)"
-    if [ -n "$g" ]; then
-		local MINUTES_SINCE_LAST_COMMIT=`minutes_since_last_commit`
-        if [ "$MINUTES_SINCE_LAST_COMMIT" -gt 30 ]; then
-            local COLOR=${RED}
-        elif [ "$MINUTES_SINCE_LAST_COMMIT" -gt 10 ]; then
-            local COLOR=${YELLOW}
-        else
-            local COLOR=${GREEN}
-        fi
-		echo ${COLOR};
-        #local SINCE_LAST_COMMIT="\[${COLOR}\]$(minutes_since_last_commit)m\[${NORMAL}\]"
-        # The __git_ps1 function inserts the current git branch where %s is
-        #local GIT_PROMPT=`__git_ps1 "(\[${BRIGHT_BLUE}\]%s\[${NORMAL}\]|${SINCE_LAST_COMMIT})"`
-        #echo ${GIT_PROMPT}
-    fi
-}
 #PS1="\h:\W\$(grb_git_prompt) \u\$ "
-PS1="\[${BRIGHT_BLACK}\]\h\[${NORMAL}\]:\[${BRIGHT_BLUE}\]\W\[${NORMAL}\]"'$(__git_ps1 "(\[${BRIGHT_BLUE}\]%s\[${NORMAL}\]|\[$(grb_git_prompt)\]$(minutes_since_last_commit)m\[${NORMAL}\])")'" \[${BRIGHT_GREEN}\]\u\[${NORMAL}\]\$ "
-
-# If this is an xterm set the title to user@host:dir
-case "$TERM" in
-xterm*|rxvt*)
-    PS1="\[\e]0;${debian_chroot:+($debian_chroot)}\h:\w\a\]$PS1"
-    ;;
-*)
-    ;;
-esac
+PROMPT_COMMAND='CurDir=`pwd|sed -e "s!$HOME!~!"|sed -re "s!([^/])[^/]+/!\1/!g"`'
+PS1="${debian_chroot:+($debian_chroot)}\[${BRIGHT_RED}\]\u\[${NORMAL}\] at \[${BRIGHT_GREEN}\]\h\[${NORMAL}\] in \[${CYAN}\]\$CurDir\[${NORMAL}\]"'$(__git_ps1 " on \[${BLUE}\]%s\[${NORMAL}\]")'"
+\$ \[${BRIGHT_WHITE}\]○\[${NORMAL}\] "
 
