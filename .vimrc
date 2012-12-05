@@ -139,6 +139,10 @@ nnoremap <leader>W :%s/\s\+$//<cr>:let @/=''<CR>
 vnoremap x "_x
 vnoremap X "_X
 
+" ToggleComment
+map ,/ :call CommentLineToEnd('// ')<CR>+
+map ,* :call CommentLinePincer('/* ', ' */')<CR>+
+
 " Php Doc
 inoremap <C-P> <ESC>:call PhpDocSingle()<CR>i 
 nnoremap <C-P> :call PhpDocSingle()<CR> 
