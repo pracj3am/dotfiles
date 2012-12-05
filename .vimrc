@@ -115,6 +115,9 @@ map ,z :colorscheme grb256<cr>:set background=dark<cr>
 " MISC KEY MAPS
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 map <leader>y "*y
+" Make ^e and ^y scroll 3 lines instead of 1
+nnoremap <C-e> 3<C-e>
+nnoremap <C-y> 3<C-y>
 " Move around splits with <c-hjkl>
 nnoremap <c-j> <c-w>j
 nnoremap <c-k> <c-w>k
@@ -132,6 +135,9 @@ call MapCR()
 nnoremap <leader><leader> <c-^>
 " Strips all trailing whitespace from current file
 nnoremap <leader>W :%s/\s\+$//<cr>:let @/=''<CR>
+" Allow deleting selection without updating the clipboard (yank buffer)
+vnoremap x "_x
+vnoremap X "_X
 
 " Php Doc
 inoremap <C-P> <ESC>:call PhpDocSingle()<CR>i 
@@ -141,6 +147,19 @@ vnoremap <C-P> :call PhpDocRange()<CR>
 " ant
 nnoremap <leader>b :w\|:!ant fnc.deploy-static<cr>
 nnoremap <leader>d :w\|:!ant deploy<cr>
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" TAB MAPPING
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+map <leader>it :tabnew<cr>
+map <leader>ie :tabedit
+map <leader>ic :tabclose<cr>
+map <leader>io :tabonly<cr>
+map <leader>in :tabnext<cr>
+map <leader>ip :tabprevious<cr>
+map <leader>if :tabfirst<cr>
+map <leader>il :tablast<cr>
+map <leader>im :tabmove
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " MULTIPURPOSE TAB KEY
