@@ -30,6 +30,8 @@ set shell=bash
 set t_ti= t_te=
 " keep more context when scrolling off the end of a buffer
 set scrolloff=3
+" Automatically reread files that have been changed externally
+set autoread
 " Store temporary files in a central spot
 set backup
 set backupdir=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
@@ -51,6 +53,9 @@ set wildmode=longest,list
 set wildmenu
 set wildignore+=libsm,testbuilder
 let mapleader=","
+" Highlight trailing whitespace
+highlight WhitespaceEOL ctermbg=DarkYellow guibg=DarkYellow
+match WhitespaceEOL /\s\+$/
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " CUSTOM AUTOCMDS
@@ -125,6 +130,8 @@ function! MapCR()
 endfunction
 call MapCR()
 nnoremap <leader><leader> <c-^>
+" Strips all trailing whitespace from current file
+nnoremap <leader>W :%s/\s\+$//<cr>:let @/=''<CR>
 
 " Php Doc
 inoremap <C-P> <ESC>:call PhpDocSingle()<CR>i 
