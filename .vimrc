@@ -286,6 +286,7 @@ map <leader>t :call RunTestFile()<cr>
 map <leader>T :call RunNearestTest()<cr>
 map <leader>a :call RunTests('')<cr>
 map <leader>tcs :w\|:call RunPhpcs()<cr>
+map <leader>tjs :w\|:call RunJshint()<cr>
 map <leader>w :w\|:!script/features --profile wip<cr>
 
 function! RunTestFile()
@@ -305,6 +306,17 @@ function! RunPhpcs()
 endfunction
           
 set errorformat+=\"%f\"\\,%l\\,%c\\,%t%*[a-zA-Z]\\,\"%m\"\\,%.%\\+
+
+function! RunJshint()
+   let l:filename=@%
+   let l:jshint_output=system('./testbuilder/jshint/node_modules/jshint/bin/hint '.l:filename.' --config testbuilder/jshint/standard/options.json')
+   "echo l:jshint_output
+   let l:jshint_list=split(l:jshint_output, "\n")
+   cexpr l:jshint_list
+   cwindow
+endfunction
+
+set errorformat+=%f:\ line\ %l\\,\ col\ %c\\,\ %m
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Md5 COMMAND
