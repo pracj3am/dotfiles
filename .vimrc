@@ -136,8 +136,8 @@ nnoremap <leader><leader> <c-^>
 " Strips all trailing whitespace from current file
 nnoremap <leader>W :%s/\s\+$//<cr>:let @/=''<CR>
 " Allow deleting selection without updating the clipboard (yank buffer)
-vnoremap x "_x
-vnoremap X "_X
+vnoremap d "_d
+vnoremap D "_D
 
 " ToggleComment
 map ,/ :call CommentLineToEnd('// ')<CR>+
