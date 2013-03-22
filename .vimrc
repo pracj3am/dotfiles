@@ -344,3 +344,12 @@ command! OpenChangedFiles :call OpenChangedFiles()
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 command! InsertTime :normal a<c-r>=strftime('%F %H:%M:%S.0 %z')<cr>
 
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" GCC shortcuts
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+map <leader>c :w\|:call Compile()<cr>
+function! Compile()
+   let l:filename=@%
+   let l:output=expand("%:t:r")
+   exec "!g++ -o ".l:output." ".l:filename
+endfunction
