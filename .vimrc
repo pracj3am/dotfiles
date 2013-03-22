@@ -287,7 +287,6 @@ map <leader>T :call RunNearestTest()<cr>
 map <leader>a :call RunTests('')<cr>
 map <leader>tcs :w\|:call RunPhpcs()<cr>
 map <leader>tjs :w\|:call RunJshint()<cr>
-map <leader>w :w\|:!script/features --profile wip<cr>
 
 function! RunTestFile()
    let l:filename=@%
