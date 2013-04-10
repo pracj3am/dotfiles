@@ -112,6 +112,15 @@ if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
     . /etc/bash_completion
 fi
 
+# Readline in vi mode
+set -o vi
+
+# will only pull things from history matching line typed so far
+bind '"\e[A":history-search-backward'
+bind '"\e[B":history-search-forward'
+bind '"\e[5~": previous-history'
+bind '"\e[6~": next-history'
+
 # source ~/.git-completion.bash
 GIT_PS1_SHOWDIRTYSTATE=1
 GIT_PS1_SHOWUNTRACKEDFILES=1 
@@ -127,6 +136,3 @@ export PSORIG="$PS1"
 PROMPT_COMMAND='CurDir=`pwd|sed -e "s!$HOME!~!"|sed -re "s!([^/])[^/]+/!\1/!g"`'
 PS1="${debian_chroot:+($debian_chroot)}\[${BRIGHT_RED}\]\u\[${NORMAL}\] at \[${BRIGHT_GREEN}\]\h\[${NORMAL}\] in \[${CYAN}\]\$CurDir\[${NORMAL}\]"'$(__git_ps1 " on \[${BLUE}\]%s\[${NORMAL}\]")'"
 \$ \[${BRIGHT_WHITE}\]○\[${NORMAL}\] "
-
-# Try Readline in vi mode
-set -o vi
