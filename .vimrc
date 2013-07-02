@@ -149,9 +149,9 @@ nnoremap <C-P> :call PhpDocSingle()<CR>
 vnoremap <C-P> :call PhpDocRange()<CR> 
 
 " ant
-nnoremap <leader>b :w\|:!ant build<cr>
-nnoremap <leader>bj :w\|:!ant js<cr>
-nnoremap <leader>bc :w\|:!ant css<cr>
+nnoremap <leader>b :w\|:!grunt<cr>
+nnoremap <leader>bj :w\|:!grunt js<cr>
+nnoremap <leader>bc :w\|:!grunt css<cr>
 nnoremap <leader>d :w\|:!ant deploy<cr>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
