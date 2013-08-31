@@ -20,8 +20,6 @@
     ff = merge --ff-only
     pullff = pull --ff-only
     b = branch
-    poh = push origin HEAD
-    pfoh = push -f origin HEAD
     ds = diff --stat=160,120
     dh1 = diff HEAD~1
     msgs = log --format="%s%n%b" --reverse
@@ -51,4 +49,5 @@
     editor = vim
 [merge]
     defaultToUpstream = true
-
+[push]
+	default = simple
