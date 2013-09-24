@@ -129,10 +129,8 @@ export PSORIG="$PS1"
 
 #PS1=$PSORIG'$(__git_ps1 "\[\033[01;34m\]%s \[\033[00m\]")'
 
-# ACTUAL CUSTOMIZATION OH NOES!
 . ~/bash_colors.sh
 
-#PS1="\h:\W\$(grb_git_prompt) \u\$ "
 PROMPT_COMMAND='CurDir=`pwd|sed -e "s!$HOME!~!"|sed -re "s!([^/])[^/]+/!\1/!g"`'
 PS1="${debian_chroot:+($debian_chroot)}\[${BRIGHT_RED}\]\u\[${NORMAL}\] at \[${BRIGHT_GREEN}\]\h\[${NORMAL}\] in \[${CYAN}\]\$CurDir\[${NORMAL}\]"'$(__git_ps1 " on \[${BLUE}\]%s\[${NORMAL}\]")'"
 \$ \[${BRIGHT_WHITE}\]○\[${NORMAL}\] "
