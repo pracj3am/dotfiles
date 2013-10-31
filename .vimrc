@@ -152,6 +152,9 @@ nnoremap <leader>bj :w\|:!grunt js<cr>
 nnoremap <leader>bc :w\|:!grunt css<cr>
 nnoremap <leader>d :w\|:!ant deploy<cr>
 
+" reload in chrome
+map <leader>r :w\|:silent !reload-chrome<cr>
+
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " TAB MAPPING
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""

@@ -1,0 +1,17 @@
+#!/bin/bash
+
+currentwindow=`xdotool getwindowfocus`
+
+for id in `xdotool search --class chromium`; do
+	if [ `xwininfo -stats -id $id | sed -n '/Override Redirect State: no/p; /Map State: IsViewable/p' | wc -l` = 2 ]; then
+		if [ `xwininfo -stats -id $id | sed -n '/Absolute upper-left X/ s/^.*:\s*\([0-9]\+\)\s*$/\1/p'` -lt 1920 ]; then
+			xdotool windowmap $id
+			xdotool windowactivate $id 2> /dev/null
+			xdotool key 'ctrl+r' $id
+
+			#xdotool windowmap $currentwindow
+			xdotool windowactivate $currentwindow
+			exit 1
+		fi
+	fi
+done
