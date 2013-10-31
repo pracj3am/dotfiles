@@ -1,3 +1,6 @@
+alias ip="dig +short myip.opendns.com @resolver1.opendns.com"
+alias ips="ifconfig -a | perl -nle'/(\d+\.\d+\.\d+\.\d+)/ && print $1'"
+
 alias sniff="sudo ngrep -W byline -d 'eth1' -t '^(GET|POST) ' 'tcp and port 80'"
 
 # list total disk usage for current folder contents
