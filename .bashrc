@@ -114,6 +114,11 @@ if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
     . /etc/bash_completion
 fi
 
+# Autojump
+if [ -f /usr/share/autojump/autojump.sh ]; then
+	. /usr/share/autojump/autojump.sh
+fi
+
 # Readline in vi mode
 set -o vi
 
