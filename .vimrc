@@ -210,31 +210,29 @@ endfunction
 map <leader>n :call RenameFile()<cr>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" INLINE VARIABLE (SKETCHY)
+" INLINE VARIABLE (php)
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 function! InlineVariable()
     " Copy the variable under the cursor into the 'a' register
     :let l:tmp_a = @a
-    :normal "ayiw
+    :normal "ayiW
     " Delete variable and equals sign
     :normal 2daW
     " Delete the expression into the 'b' register
     :let l:tmp_b = @b
-    :normal "bd$
+    :normal "byt;
     " Delete the remnants of the line
     :normal dd
     " Go to the end of the previous line so we can start our search for the
     " usage of the variable to replace. Doing '0' instead of 'k$' doesn't
     " work; I'm not sure why.
     normal k$
-    " Find the next occurence of the variable
-    exec '/\<' . @a . '\>'
-    " Replace that occurence with the text we yanked
-    exec ':.s/\<' . @a . '\>/' . @b
+    " Replace all next occurences with the text we yanked
+    exec ':.,$s/' . escape(@a, '$') . '/' . @b . '/gc'
     :let @a = l:tmp_a
     :let @b = l:tmp_b
 endfunction
-nnoremap <leader>ri :call InlineVariable()<cr>
+nnoremap <leader>iv :call InlineVariable()<cr>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " MAPS TO JUMP TO SPECIFIC COMMAND-T TARGETS AND FILES
