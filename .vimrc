@@ -101,11 +101,8 @@ augroup END
 set t_Co=16
 " so ~/.vim/bundle/vim-colors-solarized/autoload/togglebg.vim
 set background=dark
-
 colorscheme solarized
 set antialias
-
-map ,z :colorscheme grb256<cr>:set background=dark<cr>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " STATUS LINE
