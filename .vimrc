@@ -136,22 +136,32 @@ nnoremap <leader>W :%s/\s\+$//<cr>:let @/=''<CR>
 " Allow deleting selection without updating the clipboard (yank buffer)
 vnoremap d "_d
 vnoremap D "_D
-
+" Faster split resizing (+,-)
+if bufwinnr(1)
+  map + <C-W>+
+  map - <C-W>-
+endif
+" Remap :W to :w
+command W w
+" Yank from cursor to end of line
+nnoremap Y y$
+" Search and replace word under cursor (,*)
+nnoremap <leader>h :%s/\<<C-r><C-w>\>//g<Left>
+" Paste toggle (,p)
+set pastetoggle=<leader>p
+map <leader>p :set invpaste paste?<CR>
 " ToggleComment
 map ,/ :call CommentLineToEnd('// ')<CR>+
 map ,* :call CommentLinePincer('/* ', ' */')<CR>+
-
 " Php Doc
 inoremap <C-P> <ESC>:call PhpDocSingle()<CR>i 
 nnoremap <C-P> :call PhpDocSingle()<CR> 
 vnoremap <C-P> :call PhpDocRange()<CR> 
-
-" ant
+" ant, grunt
 nnoremap <leader>b :w\|:!grunt<cr>
 nnoremap <leader>bj :w\|:!grunt js<cr>
 nnoremap <leader>bc :w\|:!grunt css<cr>
 nnoremap <leader>d :w\|:!ant deploy<cr>
-
 " reload in chrome
 map <leader>r :w\|:silent !reload-chrome<cr>
 
