@@ -274,7 +274,7 @@ set errorformat+=\"%f\"\\,%l\\,%c\\,%t%*[a-zA-Z]\\,\"%m\"\\,%.%\\+
 
 function! RunJshint()
    let l:filename=@%
-   let l:jshint_output=system('./testbuilder/jshint/node_modules/jshint/bin/hint '.l:filename.' --config testbuilder/jshint/standard/options.json')
+   let l:jshint_output=system('./testbuilder/jshint/node_modules/jshint/bin/jshint '.l:filename.' --config testbuilder/jshint/standard/options.json')
    "echo l:jshint_output
    let l:jshint_list=split(l:jshint_output, "\n")
    cexpr l:jshint_list
