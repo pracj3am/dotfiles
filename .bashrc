@@ -89,15 +89,6 @@ alias ll='ls -alF'
 alias la='ls -A'
 alias l='ls -CF'
 
-alias sniff="sudo ngrep -W byline -d 'eth0' -t '^(GET|POST) ' 'tcp and port 80'"
-
-# list total disk usage for current folder contents
-alias use="/bin/ls -1A | tr '\n' '\0' | xargs -0 du -skh"
-
-# Add an "alert" alias for long running commands.  Use like so:
-#   sleep 10; alert
-alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
-
 # Alias definitions.
 # You may want to put all your additions into a separate file like
 # ~/.bash_aliases, instead of adding them here directly.
@@ -112,6 +103,14 @@ fi
 # sources /etc/bash.bashrc).
 if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
     . /etc/bash_completion
+fi
+
+if [ -f ~/.bash_colors ]; then
+    . ~/.bash_colors
+fi
+
+if [ -f ~/.bash_functions ]; then
+    . ~/.bash_functions
 fi
 
 # Autojump
@@ -135,8 +134,6 @@ GIT_PS1_SHOWUPSTREAM="git verbose legacy"
 export PSORIG="$PS1"
 
 #PS1=$PSORIG'$(__git_ps1 "\[\033[01;34m\]%s \[\033[00m\]")'
-
-. ~/bash_colors.sh
 
 PROMPT_COMMAND='CurDir=`pwd|sed -e "s!$HOME!~!"|sed -re "s!([^/])[^/]+/!\1/!g"`'
 PS1="${debian_chroot:+($debian_chroot)}\[${BRIGHT_RED}\]\u\[${NORMAL}\] at \[${BRIGHT_GREEN}\]\h\[${NORMAL}\] in \[${CYAN}\]\$CurDir\[${NORMAL}\]"'$(__git_ps1 " on \[${BLUE}\]%s\[${NORMAL}\]")'"
