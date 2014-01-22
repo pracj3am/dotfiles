@@ -112,7 +112,7 @@ set antialias
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " MISC KEY MAPS
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-map <leader>y "*y
+map <leader>y "+y
 " Make ^e and ^y scroll 3 lines instead of 1
 nnoremap <C-e> 3<C-e>
 nnoremap <C-y> 3<C-y>
