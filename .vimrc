@@ -82,7 +82,7 @@ augroup vimrcEx
   autocmd! CmdwinLeave * :call MapCR()
 augroup END
 
-function s:MkNonExDir(file, buf)
+function! s:MkNonExDir(file, buf)
     if empty(getbufvar(a:buf, '&buftype')) && a:file!~#'\v^\w+\:\/'
         let dir=fnamemodify(a:file, ':h')
         if !isdirectory(dir)
@@ -142,7 +142,7 @@ if bufwinnr(1)
   map - <C-W>-
 endif
 " Remap :W to :w
-command W w
+command! W w
 " Yank from cursor to end of line
 nnoremap Y y$
 " Search and replace word under cursor (,*)
