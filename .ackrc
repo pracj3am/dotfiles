@@ -1,5 +1,6 @@
 --type-set=less=.less
 --type-set=latte=.latte,.phtml
+--type-set=neon=.neon
 --type-set=coffeescript=.coffee
 --type-set=soy=.soy
 --ignore-dir=log
