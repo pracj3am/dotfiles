@@ -121,6 +121,25 @@ nnoremap <c-j> <c-w>j
 nnoremap <c-k> <c-w>k
 nnoremap <c-h> <c-w>h
 nnoremap <c-l> <c-w>l
+" Moving on czech keyboard
+nmap ) ]
+nmap ú [
+nmap )) ]]
+nmap úú [[
+nmap )( ]}
+nmap ú/ [{
+nnoremap á *
+nnoremap š #
+nnoremap č $
+vnoremap č $
+onoremap č $
+nnoremap ž ^
+vnoremap ž ^
+onoremap ž ^
+nnoremap é 0
+vnoremap é 0
+onoremap é 0
+nnoremap = %
 " Insert a hash rocket with <c-l>
 imap <c-l> <space>=><space>
 " Can't be bothered to understand ESC vs <c-c> in insert mode
