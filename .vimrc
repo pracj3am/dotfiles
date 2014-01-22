@@ -182,6 +182,8 @@ nnoremap <leader>bc :w\|:!grunt css<cr>
 nnoremap <leader>d :w\|:!ant deploy<cr>
 " reload in chrome
 map <leader>r :w\|:silent !reload-chrome<cr>
+" search word under cursor
+nnoremap * :Ack! "\b<cword>\b" --%:e<cr>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " TAB MAPPING
