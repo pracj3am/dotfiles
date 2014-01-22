@@ -167,7 +167,6 @@ nnoremap Y y$
 " Search and replace word under cursor (,*)
 nnoremap <leader>h :%s/\<<C-r><C-w>\>//g<Left>
 " Paste toggle (,p)
-set pastetoggle=<leader>p
 map <leader>p :set invpaste paste?<CR>
 " ToggleComment
 map ,/ :call CommentLineToEnd('// ')<CR>+
