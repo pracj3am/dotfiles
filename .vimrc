@@ -288,8 +288,8 @@ nnoremap <leader>iv :call InlineVariable()<cr>
 " MAPS TO JUMP TO SPECIFIC COMMAND-T TARGETS AND FILES
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 map <leader>gs :CommandTFlush<cr>\|:CommandT src/<cr>
-map <leader>gj :CommandTFlush<cr>\|:CommandT src-js/<cr>
-map <leader>gc :CommandTFlush<cr>\|:CommandT src-less/<cr>
+map <leader>gj :CommandTFlush<cr>\|:CommandT public/js/<cr>
+map <leader>gc :CommandTFlush<cr>\|:CommandT public/css/<cr>
 map <leader>gt :CommandTFlush<cr>\|:CommandT templates<cr>
 map <leader>ge :CommandTFlush<cr>\|:CommandT tests/<cr>
 map <leader>f :CommandTFlush<cr>\|:CommandT<cr>
@@ -306,13 +306,13 @@ map <leader>tjs :w\|:call RunJshint()<cr>
 
 function! RunTestFile()
    let l:filename=@%
-   let l:phpunit_output=system('php -d include_path=tests:testbuilder/usr/share/php testbuilder/usr/bin/phpunit -c tests/phpunit.xml '.l:filename)
+   let l:phpunit_output=system('php testbuilder/vendor/bin/phpunit -c tests/phpunit.xml '.l:filename)
    echo l:phpunit_output
 endfunction
 
 function! RunPhpcs()
    let l:filename=@%
-   let l:phpcs_output=system('phpcs --encoding=utf-8 --report=csv --standard=testbuilder/codesniffer/standard/Wikidi/ruleset.xml '.l:filename)
+   let l:phpcs_output=system('phpcs --encoding=utf-8 --report=csv --standard=testbuilder/vendor/wikidi/codesniffer/standard/Wikidi/ruleset.xml '.l:filename)
    "echo l:phpcs_output
    let l:phpcs_list=split(l:phpcs_output, "\n")
    unlet l:phpcs_list[0]
