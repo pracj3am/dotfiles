@@ -9,7 +9,7 @@
     pretty = oneline
 [alias]
     mergedone = merge --no-ff --no-commit
-    changelog = "!git tag -l v* -n20 | sed -n 'H;${;g;s/\\n[^v]/\\x00/g;p}' | sort -V | tr \\\\000 \\\\n"
+    changelog = "!git tag -l \"v*\" -n20 | sed -n 'H;${;g;s/\\n[^v]/\\x00/g;p}' | sort -V | tr \\\\000 \\\\n"
     st = status
     ci = commit
     co = checkout
