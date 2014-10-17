@@ -1,9 +1,0 @@
-<?xml version="1.0"?>
-<gconf>
-	<entry name="zoom_out" mtime="1340102465" type="string">
-		<stringvalue>F7</stringvalue>
-	</entry>
-	<entry name="zoom_in" mtime="1340102458" type="string">
-		<stringvalue>F6</stringvalue>
-	</entry>
-</gconf>
