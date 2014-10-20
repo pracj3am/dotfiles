@@ -1,7 +1,6 @@
 # Copyright 2010-2014 Greg Hurrell. All rights reserved.
 # Licensed under the terms of the BSD 2-clause license.
 
-require 'command-t/vim'
 require 'command-t/scanner'
 
 module CommandT
@@ -23,18 +22,14 @@ module CommandT
       @max_caches           = options[:max_caches] || 1
       @scan_dot_directories = options[:scan_dot_directories] || false
       @wild_ignore          = options[:wild_ignore]
-      @base_wild_ignore     = VIM::wild_ignore
-    end
-
-    def prepare_paths
-      ensure_cache_under_limit
-      @prefix_len = @path.chomp('/').length
+      @base_wild_ignore     = wild_ignore
     end
 
     def paths
-      @paths[@path] || begin
-        prepare_paths
-        nil
+      @paths[@path] ||= begin
+        ensure_cache_under_limit
+        @prefix_len = @path.chomp('/').length + 1
+        set_wild_ignore { paths! }
       end
     end
 
@@ -43,6 +38,14 @@ module CommandT
     end
 
   private
+
+    def wild_ignore
+      VIM::exists?('&wildignore') && ::VIM::evaluate('&wildignore').to_s
+    end
+
+    def paths!
+      raise RuntimeError, 'Subclass responsibility'
+    end
 
     def ensure_cache_under_limit
       # Ruby 1.8 doesn't have an ordered hash, so use a separate stack to
@@ -54,18 +57,29 @@ module CommandT
     end
 
     def path_excluded?(path, prefix_len = @prefix_len)
-      # if there is no wild_ignore, skip the call to evaluate which can be
-      # expensive for large file lists
-      if @wild_ignore && !@wild_ignore.empty?
+      if apply_wild_ignore?
         # first strip common prefix (@path) from path to match VIM's behavior
-        path = path[(prefix_len + 1)..-1]
+        path = path[prefix_len..-1]
         path = VIM::escape_for_single_quotes path
         ::VIM::evaluate("empty(expand(fnameescape('#{path}')))").to_i == 1
       end
     end
 
-    def set_wild_ignore(ignore)
-      ::VIM::command("set wildignore=#{ignore}") if @wild_ignore
+    def has_custom_wild_ignore?
+      @wild_ignore && !@wild_ignore.empty?
+    end
+
+    # Used to skip expensive calls to `expand()` when there is no applicable
+    # wildignore.
+    def apply_wild_ignore?
+      has_custom_wild_ignore? || @base_wild_ignore
+    end
+
+    def set_wild_ignore(&block)
+      ::VIM::command("set wildignore=#{@wild_ignore}") if has_custom_wild_ignore?
+      yield
+    ensure
+      ::VIM::command("set wildignore=#{@base_wild_ignore}") if has_custom_wild_ignore?
     end
   end # class FileScanner
 end # module CommandT

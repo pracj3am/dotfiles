@@ -43,7 +43,7 @@ module CommandT
     end
 
     # Insert a character at (before) the current cursor position.
-    def add! char
+    def add!(char)
       left, cursor, right = abbrev_segments
       @abbrev = left + char + cursor + right
       @col += 1
@@ -97,6 +97,22 @@ module CommandT
       end
     end
 
+    def focus
+      unless @has_focus
+        @has_focus = true
+        redraw
+      end
+    end
+
+    def unfocus
+      if @has_focus
+        @has_focus = false
+        redraw
+      end
+    end
+
+  private
+
     def redraw
       if @has_focus
         prompt_highlight = 'Comment'
@@ -116,22 +132,6 @@ module CommandT
       set_status *components
     end
 
-    def focus
-      unless @has_focus
-        @has_focus = true
-        redraw
-      end
-    end
-
-    def unfocus
-      if @has_focus
-        @has_focus = false
-        redraw
-      end
-    end
-
-  private
-
     # Returns the @abbrev string divided up into three sections, any of
     # which may actually be zero width, depending on the location of the
     # cursor:
@@ -145,7 +145,7 @@ module CommandT
       [left, cursor, right]
     end
 
-    def set_status *args
+    def set_status(*args)
       # see ':help :echo' for why forcing a redraw here helps
       # prevent the status line from getting inadvertantly cleared
       # after our echo commands

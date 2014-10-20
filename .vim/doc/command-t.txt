@@ -108,6 +108,10 @@ by looking at the output of:
 
   :ruby puts "#{RUBY_VERSION}-p#{RUBY_PATCHLEVEL}"
 
+Or, for very old versions of Ruby which don't define `RUBY_PATCHLEVEL`:
+
+  :ruby puts RUBY_VERSION
+
 A suitable Ruby environment for Windows can be installed using the Ruby
 1.8.7-p299 RubyInstaller available at:
 
@@ -356,6 +360,10 @@ From inside Vim, you can confirm the version of Ruby that it is using by
 issuing this command:
 
   :ruby puts "#{RUBY_VERSION}-p#{RUBY_PATCHLEVEL}"
+
+Or, for very old versions of Ruby which don't define `RUBY_PATCHLEVEL`:
+
+  :ruby puts RUBY_VERSION
 
 Finally, beware that if you change your installation method for Command-T (for
 example, switching from one plugin manager to another) you should verify that
@@ -884,10 +892,10 @@ settings can be used to control behavior:
       Vim's |'wildignore'| setting is used to determine which files should be
       excluded from listings. This is a comma-separated list of glob patterns.
       It defaults to the empty string, but common settings include "*.o,*.obj"
-      (to exclude object files) or ".git,.svn" (to exclude SCM metadata
-      directories). For example:
+      (to exclude object files) or "**/.git/*,**/.svn/*" (to exclude SCM
+      metadata directories). For example:
 
-        :set wildignore+=*.o,*.obj,.git
+        :set wildignore+=*.o,*.obj
 
       A pattern such as "vendor/rails/**" would exclude all files and
       subdirectories inside the "vendor/rails" directory (relative to
@@ -899,6 +907,30 @@ settings can be used to control behavior:
       changing your global |'wildignore'| setting, you can use the
       |g:CommandTWildIgnore| setting to apply an override that takes effect
       only during Command-T searches.
+
+      Note that there are some differences among file scanners
+      (see |g:CommandTFileScanner|) with respect to 'wildignore' handling:
+
+      - The default "ruby" scanner explores the filesystem recursively using a
+        depth-first search, and any directory (or subdirectory) which matches
+        the 'wildignore' pattern is not explored. So, if your 'wildignore'
+        contains "node_modules" then that entire sub-hierarchy will be
+        ignored. Additionally, wildcard patterns like "node_modules/**" or
+        "**/node_modules/*" will cause the entire sub-hierarchy to be ignored.
+
+      - The "git" and "find" scanners apply 'wildignore' filtering only after
+        completing their scans. Filtering only applies to files and not
+        directories. This means that in the "node_modules" example case, the
+        "node_modules" directory is not considered itself, and when we examine
+        a file like "node_modules/foo/bar" the "node_modules" pattern does
+        not match it (because "bar" does not match it). To exclude
+        any "node_modules" directory anywhere in the hierarchy and all of its
+        descendants we must use a pattern like "**/node_modules/*". To do this
+        only for a top-level "node_modules", use "node_modules/**".
+
+      - The "watchman" scanner is intended for use with massive hierarchies
+        where speed is of the utmost import, so it doesn't consult
+        'wildignore' at all.
 
 
 FAQ                                             *command-t-faq*
@@ -1075,21 +1107,22 @@ Command-T is written and maintained by Greg Hurrell <greg@hurrell.net>.
 Other contributors that have submitted patches include (in alphabetical
 order):
 
-  Abhinav Gupta           Marian Schubert         Scott Bronson
-  Andy Waite              Matthew Todd            Seth Fowler
+  Abhinav Gupta           Marcus Brito            Scott Bronson
+  Aleksandrs Ļedovskis    Marian Schubert         Seth Fowler
+  Andy Waite              Matthew Todd            Sherzod Gapirov
   Anthony Panozzo         Mike Lundy              Shlomi Fish
   Artem Nezvigin          Nadav Samet             Steven Moazami
   Ben Osheroff            Nate Kane               Sung Pae
   Daniel Hahler           Nicholas Alpi           Thomas Pelletier
   David Szotten           Noon Silk               Ton van den Heuvel
-  Felix Tjandrawibawa     Ole Petter Bang         Victor Hugo Borja
-  Gary Bernhardt          Patrick Hayes           Vít Ondruch
-  Ivan Ukhov              Paul Jolly              Woody Peterson
-  Jacek Wysocki           Pavel Sergeev           Yan Pritzker
-  Jeff Kreeftmeijer       Rainux Luo              Yiding Jia
-  Kevin Webster           Richard Feldman         Zak Johnson
-  Lucas de Vries          Roland Puntaier
-  Marcus Brito            Ross Lagerwall
+  Emily Strickland        Ole Petter Bang         Victor Hugo Borja
+  Felix Tjandrawibawa     Patrick Hayes           Vít Ondruch
+  Gary Bernhardt          Paul Jolly              Woody Peterson
+  Ivan Ukhov              Pavel Sergeev           Yan Pritzker
+  Jacek Wysocki           Rainux Luo              Yiding Jia
+  Jeff Kreeftmeijer       Richard Feldman         Zak Johnson
+  Kevin Webster           Roland Puntaier
+  Lucas de Vries          Ross Lagerwall
 
 As this was the first Vim plug-in I had ever written I was heavily influenced
 by the design of the LustyExplorer plug-in by Stephen Bach, which I understand
@@ -1182,6 +1215,26 @@ ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
 POSSIBILITY OF SUCH DAMAGE.
 
 HISTORY                                         *command-t-history*
+
+1.11.3 (10 October 2014)
+
+- ignore impromperly encoded filenames (patch from Sherzod Gapirov)
+- fix failure to update path when using |:cd| in conjunction with
+  |g:CommandTTraverseSCM| set to "pwd" (bug present since 1.11.2)
+
+1.11.2 (2 September 2014)
+
+- fix error while using Command-T outside of an SCM repo (bug present since
+  1.11.1)
+
+1.11.1 (29 August 2014)
+
+- compatibility fixes with Ruby 1.8.6 (patch from Emily Strickland)
+- compatibility fixes with Ruby 1.8.5
+- fix 'wildignore' being ignored (bug present since 1.11)
+- fix current working directory being ignored when |g:CommandTTraverseSCM| is
+  set to "pwd" (bug present since 1.11)
+- performance improvements
 
 1.11 (15 August 2014)
 

@@ -83,7 +83,7 @@ INCFLAGS = -I. -I$(arch_hdrdir) -I$(hdrdir)/ruby/backward -I$(hdrdir) -I$(srcdir
 DEFS     =  -DWATCHMAN_BUILD
 CPPFLAGS = -DHAVE_FCNTL_H -DHAVE_STDINT_H -DHAVE_SYS_ERRNO_H -DHAVE_SYS_SOCKET_H -DHAVE_RUBY_ST_H -DHAVE_ST_H -D_FORTIFY_SOURCE=2 $(DEFS) $(cppflags)
 CXXFLAGS = $(CCDLFLAGS) -g -O2 -fstack-protector-strong -Wformat -Werror=format-security $(ARCH_FLAG)
-ldflags  = -L. -Wl,-z,relro -L/build/ruby2.1-KZsmDY/ruby2.1-2.1.2/debian/lib -fstack-protector -rdynamic -Wl,-export-dynamic
+ldflags  = -L. -Wl,-z,relro -L/build/ruby2.1-38uxh7/ruby2.1-2.1.3/debian/lib -fstack-protector -rdynamic -Wl,-export-dynamic
 dldflags =  
 ARCH_FLAG = 
 DLDFLAGS = $(ldflags) $(dldflags) $(ARCH_FLAG)
@@ -133,10 +133,10 @@ extout_prefix =
 target_prefix = 
 LOCAL_LIBS = 
 LIBS = $(LIBRUBYARG_SHARED) -lpthread  -lpthread -lgmp -ldl -lcrypt -lm   -lc
-ORIG_SRCS = ext.c watchman.c matcher.c match.c
+ORIG_SRCS = matcher.c ext.c watchman.c match.c
 SRCS = $(ORIG_SRCS) 
-OBJS = ext.o watchman.o matcher.o match.o
-HDRS = $(srcdir)/ruby_compat.h $(srcdir)/watchman.h $(srcdir)/match.h $(srcdir)/matcher.h $(srcdir)/ext.h
+OBJS = matcher.o ext.o watchman.o match.o
+HDRS = $(srcdir)/match.h $(srcdir)/ext.h $(srcdir)/watchman.h $(srcdir)/matcher.h $(srcdir)/ruby_compat.h
 TARGET = ext
 TARGET_NAME = ext
 TARGET_ENTRY = Init_$(TARGET_NAME)

@@ -3,9 +3,10 @@
 
 module CommandT
   class Stub
+    @@patch_level = defined?(RUBY_PATCHLEVEL) ? RUBY_PATCHLEVEL : '[unknown]'
     @@load_error = ['command-t.vim could not load the C extension',
                     'Please see INSTALLATION and TROUBLE-SHOOTING in the help',
-                    "Vim Ruby version: #{RUBY_VERSION}-p#{RUBY_PATCHLEVEL}",
+                    "Vim Ruby version: #{RUBY_VERSION}-p#{@@patch_level}",
                     'For more information type:    :help command-t']
 
     [
@@ -21,7 +22,7 @@ module CommandT
 
   private
 
-    def warn *msg
+    def warn(*msg)
       ::VIM::command 'echohl WarningMsg'
       msg.each { |m| ::VIM::command "echo '#{m}'" }
       ::VIM::command 'echohl none'

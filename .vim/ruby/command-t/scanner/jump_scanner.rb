@@ -1,7 +1,6 @@
 # Copyright 2011-2014 Greg Hurrell. All rights reserved.
 # Licensed under the terms of the BSD 2-clause license.
 
-require 'command-t/vim'
 require 'command-t/vim/path_utilities'
 require 'command-t/scanner'
 
@@ -23,7 +22,7 @@ module CommandT
 
   private
 
-    def line_contains_filename? line
+    def line_contains_filename?(line)
       line.split.count > 3
     end
 
