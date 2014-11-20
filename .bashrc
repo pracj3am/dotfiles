@@ -138,3 +138,7 @@ PS1="${debian_chroot:+($debian_chroot)}\[${BRIGHT_RED}\]\u\[${NORMAL}\] at \[${B
 if [ -f /usr/share/autojump/autojump.sh ]; then
 	. /usr/share/autojump/autojump.sh
 fi
+
+DEBEMAIL="jan@prachar.eu"
+DEBFULLNAME="Jan Prachar (Software ENgineer)"
+export DEBEMAIL DEBFULLNAME
