@@ -25,6 +25,22 @@ function unidecode() {
         echo # newline
 }
 
+function wikidi-pre() {
+	dir=$(basename $(pwd))
+	p=${dir##*.}
+	git branch -f pre $1
+	git push -f origin pre:pre
+	ssh $p@$p.pre.brzy.cz
+	echo "Chech results at: http://$p.pre.brzy.cz:8088/logviewer/view/200/tail/single/normal?log=%2Fvar%2Fwww%2F$p%2Flogs%2Fdeploy%2Ftests.log"
+}
+
+function wikidi-release() {
+	d="release/"$(date +"%Y%m%d")
+	r=$(($(git tag -l --sort "-v:refname" "$d*" | head -1 | sed -n "s@^$d\.@@p" || echo 0)+1))
+	git tag $d.$r $1
+	git push origin $d.$r
+}
+
 # animated gifs from any video
 # from alex sexton   gist.github.com/SlexAxton/4989674
 gifify() {
