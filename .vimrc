@@ -54,7 +54,7 @@ filetype plugin indent on
 set wildmode=longest,list
 " make tab completion for files/buffers act like bash
 set wildmenu
-set wildignore+=libsm,testbuilder,vendor
+set wildignore+=*.o,*.lo,libsm,testbuilder,vendor
 let mapleader=","
 " Highlight trailing whitespace
 highlight WhitespaceEOL ctermbg=DarkYellow guibg=DarkYellow
