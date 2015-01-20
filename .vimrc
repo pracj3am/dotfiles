@@ -312,7 +312,7 @@ endfunction
 
 function! RunPhpcs()
    let l:filename=@%
-   let l:phpcs_output=system('phpcs --encoding=utf-8 --report=csv --standard=testbuilder/vendor/wikidi/codesniffer/standard/Wikidi/ruleset.xml '.l:filename)
+   let l:phpcs_output=system('./testbuilder/vendor/bin/phpcs --encoding=utf-8 --report=csv --standard=testbuilder/vendor/wikidi/codesniffer/standard/Wikidi/ruleset.xml '.l:filename)
    "echo l:phpcs_output
    let l:phpcs_list=split(l:phpcs_output, "\n")
    unlet l:phpcs_list[0]
