@@ -6,6 +6,7 @@
 --ignore-dir=log
 --ignore-dir=tmp
 --ignore-dir=vendor
+--ignore-dir=supervise
 --ignore-dir=libsm
 --ignore-dir=libs
 --ignore-dir=testbuilder
