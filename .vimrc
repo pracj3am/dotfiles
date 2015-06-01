@@ -142,7 +142,6 @@ onoremap ž ^
 nnoremap é 0
 vnoremap é 0
 onoremap é 0
-nnoremap = %
 " Insert a hash rocket with <c-l>
 imap <c-l> <space>=><space>
 " Can't be bothered to understand ESC vs <c-c> in insert mode
