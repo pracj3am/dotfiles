@@ -305,7 +305,7 @@ map <leader>tjs :w\|:call RunJshint()<cr>
 
 function! RunTestFile()
    let l:filename=@%
-   let l:phpunit_output=system('php testbuilder/vendor/bin/phpunit -c tests/phpunit.xml '.l:filename)
+   let l:phpunit_output=system('docker-compose -f ../docker-testomato/testomato-dev.yml run --rm test ./testbuilder/vendor/bin/phpunit -c tests/unit/phpunit.xml '.l:filename)
    echo l:phpunit_output
 endfunction
 
