@@ -1,5 +1,6 @@
 --type-set=less=.less
 --type-set=latte=.latte,.phtml
+--type-set=php=.php,.latte,.phtml
 --type-set=neon=.neon
 --type-set=soy=.soy
 --type-set=conf=.conf
