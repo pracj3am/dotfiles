@@ -37,7 +37,7 @@ function wikidi-pre() {
 function wikidi-release() {
 	d="release/"$(date +"%Y%m%d")
 	r=$(($(git tag -l --sort "-v:refname" "$d*" | head -1 | sed -n "s@^$d\.@@p" || echo 0)+1))
-	git tag $d.$r $1
+	git tag -s -m "honza releasuje :)" $d.$r $1
 	git push origin $d.$r
 }
 
