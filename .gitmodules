@@ -10,3 +10,6 @@
 [submodule ".vim/pack/pracj3am/start/command-t"]
 	path = .vim/pack/pracj3am/start/command-t
 	url = https://github.com/wincent/command-t.git
+[submodule ".vim/pack/pracj3am/start/lua"]
+	path = .vim/pack/pracj3am/start/lua
+	url = https://github.com/tbastos/vim-lua
