@@ -131,6 +131,7 @@ nmap )) ]]
 nmap úú [[
 nmap )( ]}
 nmap ú/ [{
+nmap <C-g> <C-]>
 nnoremap á *
 nnoremap š #
 nnoremap č $
