@@ -1,3 +1,6 @@
 [submodule ".vim/pack/pracj3am/start/fugitive"]
 	path = .vim/pack/pracj3am/start/fugitive
 	url = https://github.com/tpope/vim-fugitive
+[submodule ".vim/pack/pracj3am/start/ack"]
+	path = .vim/pack/pracj3am/start/ack
+	url = https://github.com/mileszs/ack.vim.git
