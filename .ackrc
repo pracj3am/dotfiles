@@ -6,7 +6,8 @@
 --type-set=conf=.conf
 --type-set=lua=.lua
 --type-set=c=.c,.h
---type-set=h=.c,.h
+--type-set=cc=.cc,.h
+--type-set=h=.c,.cc,.cpp,.h
 --type-set=md:match:/.*/
 --ignore-dir=log
 --ignore-dir=tmp
