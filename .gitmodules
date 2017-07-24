@@ -4,3 +4,6 @@
 [submodule ".vim/pack/pracj3am/start/ack"]
 	path = .vim/pack/pracj3am/start/ack
 	url = https://github.com/mileszs/ack.vim.git
+[submodule ".vim/pack/pracj3am/start/less"]
+	path = .vim/pack/pracj3am/start/less
+	url = https://github.com/groenewege/vim-less
