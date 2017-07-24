@@ -1,0 +1,3 @@
+[submodule ".vim/pack/pracj3am/start/fugitive"]
+	path = .vim/pack/pracj3am/start/fugitive
+	url = https://github.com/tpope/vim-fugitive
