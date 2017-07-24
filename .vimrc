@@ -6,7 +6,7 @@ set nocompatible
 set hidden
 " remember more commands and search history
 set history=10000
-set noexpandtab
+set expandtab
 set tabstop=4
 set shiftwidth=4
 set softtabstop=0
