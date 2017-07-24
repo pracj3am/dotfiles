@@ -7,3 +7,6 @@
 [submodule ".vim/pack/pracj3am/start/less"]
 	path = .vim/pack/pracj3am/start/less
 	url = https://github.com/groenewege/vim-less
+[submodule ".vim/pack/pracj3am/start/command-t"]
+	path = .vim/pack/pracj3am/start/command-t
+	url = https://github.com/wincent/command-t.git
