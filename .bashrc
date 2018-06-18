@@ -132,7 +132,7 @@ export PSORIG="$PS1"
 
 PROMPT_COMMAND='history -a;CurDir=`pwd|sed -e "s!$HOME!~!"|sed -re "s!([^/])[^/]+/!\1/!g"`;echo -ne "\033]0;$CurDir\007"'
 PS1="${debian_chroot:+($debian_chroot)}\[${BRIGHT_RED}\]\u\[${NORMAL}\] at \[${BRIGHT_GREEN}\]\h\[${NORMAL}\] in \[${CYAN}\]\$CurDir\[${NORMAL}\]"'$(__git_ps1 " on \[${BLUE}\]%s\[${NORMAL}\]")'"
-\$ \[${BRIGHT_WHITE}\]○\[${NORMAL}\] "
+\[${BRIGHT_WHITE}\]\$\[${NORMAL}\] "
 
 # Autojump
 if [ -f /usr/share/autojump/autojump.sh ]; then
