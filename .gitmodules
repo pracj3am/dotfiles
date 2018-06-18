@@ -13,3 +13,6 @@
 [submodule ".vim/pack/pracj3am/start/lua"]
 	path = .vim/pack/pracj3am/start/lua
 	url = https://github.com/tbastos/vim-lua
+[submodule ".vim/pack/pracj3am/start/vim-go"]
+	path = .vim/pack/pracj3am/start/vim-go
+	url = https://github.com/fatih/vim-go.git
