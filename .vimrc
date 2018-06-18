@@ -143,8 +143,6 @@ onoremap ž ^
 nnoremap é 0
 vnoremap é 0
 onoremap é 0
-" Insert a hash rocket with <c-l>
-imap <c-l> <space>=><space>
 " Can't be bothered to understand ESC vs <c-c> in insert mode
 imap <c-c> <esc>
 " Clear the search buffer when hitting return
@@ -174,15 +172,6 @@ map <leader>p :set invpaste paste?<CR>
 " ToggleComment
 map ,/ :call CommentLineToEnd('// ')<CR>+
 map ,* :call CommentLinePincer('/* ', ' */')<CR>+
-" Php Doc
-inoremap <C-P> <ESC>:call PhpDocSingle()<CR>i 
-nnoremap <C-P> :call PhpDocSingle()<CR> 
-vnoremap <C-P> :call PhpDocRange()<CR> 
-" ant, grunt
-nnoremap <leader>b :w\|:!grunt<cr>
-nnoremap <leader>bj :w\|:!grunt js<cr>
-nnoremap <leader>bc :w\|:!grunt css<cr>
-nnoremap <leader>d :w\|:!ant deploy<cr>
 " reload in chrome
 map <leader>r :w\|:silent !reload-chrome<cr>
 " search word under cursor
@@ -288,56 +277,8 @@ nnoremap <leader>iv :call InlineVariable()<cr>
 " MAPS TO JUMP TO SPECIFIC COMMAND-T TARGETS AND FILES
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 map <leader>gs :CommandTFlush<cr>\|:CommandT src/<cr>
-map <leader>gj :CommandTFlush<cr>\|:CommandT public/js/<cr>
-map <leader>gc :CommandTFlush<cr>\|:CommandT public/css/<cr>
-map <leader>gt :CommandTFlush<cr>\|:CommandT templates<cr>
-map <leader>ge :CommandTFlush<cr>\|:CommandT tests/<cr>
 map <leader>f :CommandTFlush<cr>\|:CommandT<cr>
 map <leader>F :CommandTFlush<cr>\|:CommandT %%<cr>
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" RUNNING TESTS
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-map <leader>t :call RunTestFile()<cr>
-map <leader>T :call RunNearestTest()<cr>
-map <leader>a :call RunTests('')<cr>
-map <leader>tcs :w\|:call RunPhpcs()<cr>
-map <leader>tjs :w\|:call RunJshint()<cr>
-
-function! RunTestFile()
-   let l:filename=@%
-   let l:phpunit_output=system('docker-compose -f ../docker-testomato/testomato-dev.yml run --rm test ./testbuilder/vendor/bin/phpunit -c tests/unit/phpunit.xml '.l:filename)
-   echo l:phpunit_output
-endfunction
-
-function! RunPhpcs()
-   let l:filename=@%
-   let l:phpcs_output=system('./testbuilder/vendor/bin/phpcs --encoding=utf-8 --report=csv --standard=testbuilder/vendor/wikidi/codesniffer/standard/Wikidi/ruleset.xml '.l:filename)
-   "echo l:phpcs_output
-   let l:phpcs_list=split(l:phpcs_output, "\n")
-   unlet l:phpcs_list[0]
-   cexpr l:phpcs_list
-   cwindow
-endfunction
-          
-set errorformat+=\"%f\"\\,%l\\,%c\\,%t%*[a-zA-Z]\\,\"%m\"\\,%.%\\+
-
-function! RunJshint()
-   let l:filename=@%
-   let l:jshint_output=system('./testbuilder/jshint/node_modules/jshint/bin/jshint '.l:filename.' --config testbuilder/jshint/standard/options.json')
-   "echo l:jshint_output
-   let l:jshint_list=split(l:jshint_output, "\n")
-   cexpr l:jshint_list
-   cwindow
-endfunction
-
-set errorformat+=%f:\ line\ %l\\,\ col\ %c\\,\ %m
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Md5 COMMAND
-" Show the MD5 of the current buffer
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-command! -range Md5 :echo system('echo '.shellescape(join(getline(<line1>, <line2>), '\n')) . '| md5')
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " OpenChangedFiles COMMAND
