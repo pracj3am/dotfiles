@@ -16,3 +16,6 @@
 [submodule ".vim/pack/pracj3am/start/vim-go"]
 	path = .vim/pack/pracj3am/start/vim-go
 	url = https://github.com/fatih/vim-go.git
+[submodule ".vim/pack/pracj3am/start/ultisnips"]
+	path = .vim/pack/pracj3am/start/ultisnips
+	url = https://github.com/SirVer/ultisnips.git
