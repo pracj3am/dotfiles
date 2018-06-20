@@ -1,8 +1,6 @@
 [user]
     name = Jan Prachař
     email = jan.prachar@gmail.com
-[color]
-    ui = true
 [log]
     decorate = true
 [format]
