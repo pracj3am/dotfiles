@@ -142,3 +142,5 @@ fi
 DEBEMAIL="jan@prachar.eu"
 DEBFULLNAME="Jan Prachar (Software ENgineer)"
 export DEBEMAIL DEBFULLNAME
+
+export GOPATH=$HOME/go
