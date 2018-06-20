@@ -32,6 +32,8 @@ set t_ti= t_te=
 set scrolloff=3
 " Automatically reread files that have been changed externally
 set autoread
+" Automaticaly save file if :make is called
+set autowrite
 " Store temporary files in a central spot
 set backup
 set backupdir=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
