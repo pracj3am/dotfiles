@@ -77,6 +77,10 @@ augroup vimrcEx
     \   exe "normal g`\"" |
     \ endif
 
+  autocmd FileType go nmap <Leader>i <Plug>(go-info)
+  autocmd FileType go nmap <leader>b <Plug>(go-build)
+  autocmd FileType go nmap <leader>r <Plug>(go-run)
+
   autocmd FileType php set smarttab
   " run file with PHP CLI (CTRL-M)
   autocmd FileType php noremap <leader>m :w!<CR>:!php %<CR>
