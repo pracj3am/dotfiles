@@ -61,6 +61,8 @@ let mapleader=","
 " Highlight trailing whitespace
 highlight WhitespaceEOL ctermbg=DarkYellow guibg=DarkYellow
 match WhitespaceEOL /\s\+$/
+" Expand snippets with <C-L>
+let g:UltiSnipsExpandTrigger="<C-L>"
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " CUSTOM AUTOCMDS
