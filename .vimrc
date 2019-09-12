@@ -272,29 +272,24 @@ function! QuickfixFilenames()
 endfunction
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" INLINE VARIABLE (php)
+" FOLD / UNFOLD FUNCTION ARGUMENTS
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-function! InlineVariable()
-    " Copy the variable under the cursor into the 'a' register
-    :let l:tmp_a = @a
-    :normal "ayiW
-    " Delete variable and equals sign
-    :normal 2daW
-    " Delete the expression into the 'b' register
-    :let l:tmp_b = @b
-    :normal "byt;
-    " Delete the remnants of the line
-    :normal dd
-    " Go to the end of the previous line so we can start our search for the
-    " usage of the variable to replace. Doing '0' instead of 'k$' doesn't
-    " work; I'm not sure why.
-    normal k$
-    " Replace all next occurences with the text we yanked
-    exec ':.,$s/' . escape(@a, '$') . '/' . @b . '/gc'
-    :let @a = l:tmp_a
-    :let @b = l:tmp_b
+function! UnfoldArgs()
+    execute "normal ^f(a\<cr>\<esc>f,.;.;.;.;.;.;.;.;.;.;."
+    execute "normal f)i\<cr>"
 endfunction
-nnoremap <leader>iv :call InlineVariable()<cr>
+nnoremap <leader>au :call UnfoldArgs()<cr>
+function! FoldArgs()
+    if getline(".")[col(".")-1] != ")"
+        execute "normal /)\<cr>"
+    endif
+    execute "normal ?(\<cr>f)"
+    while getline(".")[col(".")-1] != ")"
+        normal J
+    endwhile
+    s/( /(/e
+endfunction
+nnoremap <leader>af :call FoldArgs()<cr>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " MAPS TO JUMP TO SPECIFIC COMMAND-T TARGETS AND FILES
