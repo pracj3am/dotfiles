@@ -141,6 +141,6 @@ if [ -f /usr/share/autojump/autojump.sh ]; then
 	. /usr/share/autojump/autojump.sh
 fi
 
-DEBEMAIL="jan@prachar.eu"
-DEBFULLNAME="Jan Prachar (Software ENgineer)"
+DEBEMAIL="jan.prachar@gmail.com"
+DEBFULLNAME="Jan Prachar"
 export DEBEMAIL DEBFULLNAME
