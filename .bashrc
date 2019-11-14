@@ -2,7 +2,9 @@
 # see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
 # for examples
 
-PATH="$PATH:~/bin"
+export GOPATH=$HOME/go
+
+PATH="$PATH:~/bin:$GOPATH/bin"
 
 # If not running interactively, don't do anything
 [ -z "$PS1" ] && return
@@ -142,5 +144,3 @@ fi
 DEBEMAIL="jan@prachar.eu"
 DEBFULLNAME="Jan Prachar (Software ENgineer)"
 export DEBEMAIL DEBFULLNAME
-
-export GOPATH=$HOME/go
