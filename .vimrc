@@ -206,7 +206,6 @@ nnoremap * :Ack! "\b<cword>\b" --type=%:e<cr>
 map <leader>it :tabnew<cr>
 map <leader>ie :tabedit
 map <leader>ic :tabclose<cr>
-map <leader>io :tabonly<cr>
 map <leader>in :tabnext<cr>
 map <leader>ip :tabprevious<cr>
 map <leader>if :tabfirst<cr>
