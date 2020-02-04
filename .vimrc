@@ -89,12 +89,7 @@ augroup vimrcEx
   autocmd BufReadPost quickfix nnoremap <buffer> <CR> <CR>
   autocmd BufReadPost quickfix nnoremap <buffer> <silent> t <C-W><CR><C-W>T
   autocmd BufReadPost quickfix nnoremap <buffer> <silent> o <CR>
-  autocmd BufReadPost quickfix nnoremap <buffer> <silent> O <CR><C-W>p<C-W>c
-  autocmd BufReadPost quickfix nnoremap <buffer> <silent> go <CR><C-W>p
-  autocmd BufReadPost quickfix nnoremap <buffer> <silent> h <C-W><CR><C-W>K
-  autocmd BufReadPost quickfix nnoremap <buffer> <silent> H <C-W><CR><C-W>K<C-W>b
-  autocmd BufReadPost quickfix nnoremap <buffer> <silent> v <C-W><CR><C-W>H<C-W>b<C-W>J<C-W>t
-  autocmd BufReadPost quickfix nnoremap <buffer> <silent> gv <C-W><CR><C-W>H<C-W>b<C-W>J
+  autocmd BufReadPost quickfix nnoremap <buffer> <silent> O <CR><C-W>p
   autocmd BufReadPost quickfix if empty(getloclist(0))|nnoremap <buffer> q :cclose<CR>|else|nnoremap <buffer> q :lclose<CR>|endif
 augroup END
 
