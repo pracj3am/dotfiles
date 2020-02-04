@@ -135,6 +135,8 @@ nnoremap <c-l> <c-w>l
 " Move inside Quickfix window
 nnoremap <c-n> :cnext<CR>
 nnoremap <c-p> :cprevious<CR>
+nnoremap <c-f> :lnext<CR>
+nnoremap <c-e> :lprevious<CR>
 nnoremap <silent> <leader>q :cclose<CR>:lclose<CR>
 " Moving on czech keyboard
 nmap ) ]
@@ -323,3 +325,19 @@ function! Compile()
    let l:output=expand("%:t:r")
    exec "!g++ -o ".l:output." ".l:filename
 endfunction
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Syntastic
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_enable_signs = 0
+let g:syntastic_echo_current_error = 0
+let g:syntastic_nested_autocommands = 1
+let g:syntastic_mode_map = {
+    \ "mode": "passive",
+    \ "active_filetypes": [],
+    \ "passive_filetypes": [] }
+let g:syntastic_lua_checkers = ['luacheck']
+let g:syntastic_lua_luacheck_args = ['--std', 'ngx_lua']
+map <leader>l :SyntasticCheck<cr>
