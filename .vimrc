@@ -81,12 +81,6 @@ augroup vimrcEx
   autocmd FileType go nmap <leader>b <Plug>(go-build)
   autocmd FileType go nmap <leader>r <Plug>(go-run)
 
-  autocmd FileType php set smarttab
-  " run file with PHP CLI (CTRL-M)
-  autocmd FileType php noremap <leader>m :w!<CR>:!php %<CR>
-  " PHP parser check (CTRL-L)
-  autocmd FileType php noremap <leader>l :!php -l %<CR>
-
   " Leave the return key alone when in command line windows, since it's used
   " to run commands there.
   autocmd! CmdwinEnter * :unmap <cr>
