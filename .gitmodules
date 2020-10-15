@@ -22,3 +22,6 @@
 [submodule ".vim/pack/pracj3am/start/syntastic"]
 	path = .vim/pack/pracj3am/start/syntastic
 	url = https://github.com/vim-syntastic/syntastic.git
+[submodule ".vim/pack/pracj3am/start/vim-capnp"]
+	path = .vim/pack/pracj3am/start/vim-capnp
+	url = https://github.com/cstrahan/vim-capnp.git
