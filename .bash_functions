@@ -56,3 +56,16 @@ gifify() {
     echo "proper usage: gifify <input_movie.mov>. You DO need to include extension."
   fi
 }
+
+dec2ip() {
+    local ip dec=$@
+    for e in {3..0}
+    do
+        ((octet = dec / (256 ** e) ))
+        ((dec -= octet * 256 ** e))
+        ip=$octet$delim$ip
+        delim=.
+    done
+    printf '%s\n' "$ip"
+}
+
