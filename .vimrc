@@ -36,8 +36,8 @@ set autoread
 set autowrite
 " Store temporary files in a central spot
 set backup
-set backupdir=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
-set directory=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
+set backupdir=~/.vim-tmp//,~/.tmp//,~/tmp//
+set directory=~/.vim-tmp//,~/.tmp//,~/tmp//
 " allow backspacing over everything in insert mode
 set backspace=indent,eol,start
 " display incomplete commands
