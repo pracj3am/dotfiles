@@ -141,6 +141,7 @@ if [ -f /usr/share/autojump/autojump.sh ]; then
 	. /usr/share/autojump/autojump.sh
 fi
 
+EDITOR=/usr/bin/vim
 DEBEMAIL="jan.prachar@gmail.com"
 DEBFULLNAME="Jan Prachar"
-export DEBEMAIL DEBFULLNAME
+export DEBEMAIL DEBFULLNAME EDITOR
