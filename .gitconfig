@@ -49,3 +49,10 @@
     defaultToUpstream = true
 [push]
     default = current
+[rebase]
+    instructionFormat = "<%an>\t%s"
+	autoSquash = true
+[gpg]
+	program = gpg
+[advice]
+	skippedCherryPicks = false
