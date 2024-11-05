@@ -189,7 +189,7 @@ map ,* :call CommentLinePincer('/* ', ' */')<CR>+
 " reload in chrome
 map <leader>r :w\|:silent !reload-chrome<cr>
 " search word under cursor
-nnoremap * :Ack! "\b<cword>\b" --type=%:e<cr>
+nnoremap * :Ack! "\b<cword>\b" --type=%:e:s?^c$?cc?:s?^h$?cc?:s?^cpp$?cc?<cr>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " TAB MAPPING
