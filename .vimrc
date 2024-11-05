@@ -81,6 +81,8 @@ augroup vimrcEx
   autocmd FileType go nmap <leader>b <Plug>(go-build)
   autocmd FileType go nmap <leader>r <Plug>(go-run)
 
+  autocmd BufNewFile,BufRead *.svelte set syntax=html
+
   " Leave the return key alone when in command line windows, since it's used
   " to run commands there.
   autocmd! CmdwinEnter * :unmap <cr>
