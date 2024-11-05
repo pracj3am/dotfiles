@@ -126,8 +126,8 @@ bind '"\e[6~": next-history'
 
 # source ~/.git-completion.bash
 GIT_PS1_SHOWDIRTYSTATE=1
-GIT_PS1_SHOWUNTRACKEDFILES=1 
-GIT_PS1_SHOWUPSTREAM="git verbose legacy" 
+GIT_PS1_SHOWUPSTREAM="git verbose"
+GIT_PS1_SHOWCOLORHINTS=1
 export PSORIG="$PS1"
 
 #PS1=$PSORIG'$(__git_ps1 "\[\033[01;34m\]%s \[\033[00m\]")'
