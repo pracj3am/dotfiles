@@ -10,6 +10,7 @@
     changelog = "!git tag -l \"v*\" -n20 | sed -n 'H;${;g;s/\\n[^v]/\\x00/g;p}' | sort -V | tr \\\\000 \\\\n"
     st = status
     ci = commit
+    cf = commit --fixup
     co = checkout
     di = diff
     dc = diff --cached
